@@ -12,4 +12,15 @@ class CategoryController extends Controller
         $category = Category::all();
         return response()->json($category);
     }
+
+    function store(Request $request)
+    {
+        $category = Category::create([
+            'name' => $request->name,
+            'slug' => $request->slug,
+        ]);
+        return response()->json([
+            'message' => 'Category successfully',
+        ], 200);
+    }
 }

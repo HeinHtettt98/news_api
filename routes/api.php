@@ -20,24 +20,25 @@ use App\Http\Controllers\CommentController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', fn(Request $request) => $request->user());
-    Route::post('/user/logout', [UserController::class, 'logout']);
+    //News Routes
     Route::post('/news', [App\Http\Controllers\NewsController::class, 'store']);
+    Route::delete('/news/{news}', [App\Http\Controllers\NewsController::class, 'destory']);
+    //User Routes
     Route::get('/user/news', [UserController::class, 'newsByUser']);
+    Route::post('/user/logout', [UserController::class, 'logout']);
+    Route::post('/user/update-profile', [UserController::class, 'updateProfile']);
+    //comment
+    Route::post('/comment', [CommentController::class, 'store']);
 });
 Route::get('/news', [NewsController::class, 'index']);
-Route::post('/user/update-profile', [UserController::class, 'updateProfile']);
 
 //News Routes
 Route::get('/news/{news}', [App\Http\Controllers\NewsController::class, 'show']);
-Route::delete('/news/{news}', [App\Http\Controllers\NewsController::class, 'destory']);
 
 //Category Routes
 Route::get('/category', [CategoryController::class, 'index']);
-
-//comment
-Route::post('/comment', [CommentController::class, 'store']);
+Route::post('/category', [CategoryController::class, 'store']);
 
 //User Routes
 Route::post('/user/register', [UserController::class, 'register']);
-Route::get('/user', [UserController::class, 'index']);
 Route::post('/user/login', [UserController::class, 'login']);
