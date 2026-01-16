@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173'],
+    'allowed_origins' => ['http://localhost:5173',"https://vercel.com/heins-projects-33378e71/laravel-news-app"],
 
     'allowed_origins_patterns' => [],
 
@@ -32,3 +32,5 @@ return [
     'supports_credentials' => true,
 
 ];
+
+
